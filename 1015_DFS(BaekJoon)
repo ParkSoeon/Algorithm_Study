@@ -1,0 +1,17 @@
+n, m = map(int, input().split()) # 1~n까지 자연수 중, '중복 없이' m개를 고른 sequence
+seq = []
+
+def sol(start, n, m):
+    if m == 0:
+        print(*seq)
+        return
+    for _ in range(start, n+1):
+        seq.append(_)
+        sol(_+1, n, m-1)
+        seq.pop()
+
+sol(1, n, m)
+
+# Time Complexity: O(Combination(n, m))
+# Reference: https://olrlobt.tistory.com/35
+# Exercise Source: https://www.acmicpc.net/problem/15650
